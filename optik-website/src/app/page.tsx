@@ -92,7 +92,7 @@ function HomeContent() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Ambient Glow */}
-      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-sovereign-emerald/10 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-sovereign-emerald/10 blur-[120px] rounded-full pointer-events-none z-0" aria-hidden="true" />
 
       {/* Hero Section */}
       <div className="relative z-10 border-b border-white/5">
@@ -106,9 +106,9 @@ function HomeContent() {
             </p>
 
             {/* Contract Address Banner */}
-            <div className="inline-block bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-8 py-4 mb-10 transform hover:scale-105 transition-all cursor-pointer group hover:border-sovereign-gold/30">
-              <div className="text-xs text-sovereign-gold mb-1 tracking-widest uppercase font-semibold">OPTIK Token Contract</div>
-              <div className="font-mono text-sm text-gray-400 group-hover:text-white transition-colors break-all">{CONTRACT_ADDRESS}</div>
+            <div className="inline-block bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-8 py-4 mb-10 transform hover:scale-105 transition-all cursor-pointer group hover:border-sovereign-gold/30" role="region" aria-label="OPTIK Token Contract Address">
+              <div className="text-xs text-sovereign-gold mb-1 tracking-widest uppercase font-semibold" aria-hidden="true">OPTIK Token Contract</div>
+              <div className="font-mono text-sm text-gray-400 group-hover:text-white transition-colors break-all" role="text">{CONTRACT_ADDRESS}</div>
             </div>
 
             {/* Purchase CTA */}
@@ -376,13 +376,11 @@ function HomeContent() {
                     placeholder="Ask anything..."
                     value={gptInput}
                     onChange={(e) => setGptInput(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && sendToGPT()}
                     disabled={gptLoading}
                     aria-label="Type your message"
                   />
                   <button
                     type="submit"
-                    onClick={sendToGPT}
                     disabled={gptLoading || !gptInput.trim()}
                     className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Send message"
