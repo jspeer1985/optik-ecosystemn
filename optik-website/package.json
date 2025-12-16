@@ -1,0 +1,52 @@
+{
+  "name": "optik-ecosystem",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@blockworks-foundation/mango-client": "^2.3.0",
+    "@coral-xyz/anchor": "^0.32.1",
+    "@drift-labs/sdk": "^2.148.0",
+    "@metaplex-foundation/mpl-token-metadata": "^3.4.0",
+    "@openbook-dex/openbook-v2": "^0.2.10",
+    "@pythnetwork/client": "^2.22.1",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/wallet-adapter-base": "^0.9.27",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solana/web3.js": "^1.98.4",
+    "@supabase/supabase-js": "^2.45.4",
+    "@switchboard-xyz/solana.js": "^3.2.5",
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "^10.4.23",
+    "bn.js": "^5.2.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.460.0",
+    "next": "15.0.5",
+    "openai": "^4.68.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hot-toast": "^2.6.0",
+    "stripe": "^17.3.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.5",
+    "postcss": "^8",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5"
+  }
+}

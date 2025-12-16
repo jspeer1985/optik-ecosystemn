@@ -1,0 +1,47 @@
+🚀 OPTIK ECOSYSTEM - FINAL DEPLOYMENT CHECKLIST
+================================================
+
+✅ COMPLETED:
+  [✓] Vault program built
+  [✓] Vault integrated into frontend
+  [✓] Shows 90-day liquidity lock
+  [✓] Shows 2.5% platform fee
+  [✓] Shows cost breakdown
+  [✓] OPTIK GPT working
+  [✓] Wallet integration complete
+  [✓] Environment variables configured
+
+📋 READY TO DEPLOY:
+
+1. SMART CONTRACTS TO DEVNET:
+   cd ~/optik-website/programs/vault
+   solana config set --url devnet
+   anchor deploy
+   
+   (Copy Program ID and add to .env.local)
+
+2. UPDATE FRONTEND WITH PROGRAM ID:
+   Add to .env.local:
+   NEXT_PUBLIC_VAULT_PROGRAM=<your_program_id>
+
+3. SETUP SUPABASE DATABASE:
+   - Go to app.supabase.com
+   - Open SQL Editor
+   - Run supabase_schema.sql
+
+4. TEST ON DEVNET:
+   - Connect wallet
+   - Try creating a token
+   - Verify vault locking works
+   - Check database logs
+
+5. DEPLOY TO MAINNET (when ready):
+   - Switch to mainnet in .env.local
+   - Deploy contracts to mainnet
+   - Deploy frontend to Vercel
+
+================================================
+
+CURRENT STATUS: READY FOR DEVNET DEPLOYMENT
+
+Next command: cd programs/vault && anchor deploy

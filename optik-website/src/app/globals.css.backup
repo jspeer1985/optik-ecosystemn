@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --quantum-primary: #00F0FF;
+  --quantum-secondary: #f8e10eff;
+  --quantum-accent: #00FF88;
+  --quantum-dark: #0A0E27;
+  --quantum-darker: #050714;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-quantum-darker text-white;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Quantum scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-quantum-darker;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-quantum-primary/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-quantum-primary/50;
+  }
+}
+
+@layer components {
+  /* Quantum Glass Morphism */
+  .glass-quantum {
+    @apply bg-quantum-light/10 backdrop-blur-xl border border-quantum-primary/20;
+    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+  }
+  
+  /* Holographic Card */
+  .holo-card {
+    @apply relative overflow-hidden rounded-xl;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 240, 255, 0.1) 0%,
+      rgba(255, 0, 245, 0.1) 100%
+    );
+    border: 1px solid rgba(0, 240, 255, 0.2);
+  }
+  
+  .holo-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(0, 240, 255, 0.1) 50%,
+      transparent 70%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 3s linear infinite;
+  }
+  
+  .holo-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Quantum Button */
+  .btn-quantum {
+    @apply relative px-6 py-3 rounded-lg font-semibold;
+    @apply bg-gradient-to-r from-quantum-primary to-quantum-secondary;
+    @apply transition-all duration-300;
+    @apply shadow-quantum hover:shadow-quantum-lg;
+    @apply hover:scale-105 active:scale-95;
+  }
+  
+  /* Neural Network Background */
+  .neural-bg {
+    @apply relative;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 0, 245, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+  }
+  
+  /* Quantum Input */
+  .input-quantum {
+    @apply w-full px-4 py-3 rounded-lg;
+    @apply bg-quantum-light/20 border border-quantum-primary/30;
+    @apply focus:border-quantum-primary focus:outline-none;
+    @apply transition-all duration-300;
+    @apply placeholder:text-white/30;
+  }
+  
+  .input-quantum:focus {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-quantum;
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, #00F0FF, #FF00F5) 1;
+  }
+}
+
+/* Loading Animation */
+@keyframes quantum-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading-quantum {
+  animation: quantum-pulse 1.5s ease-in-out infinite;
+}
