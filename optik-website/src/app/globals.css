@@ -11,7 +11,8 @@
   --slate-900: #0f172a;
   --slate-800: #1e293b;
   --slate-700: #334155;
-  --slate-600: #475569;
+  /* WCAG AA Compliant: Improved contrast from #475569 to #94a3b8 (contrast ratio ~7:1 on dark bg) */
+  --slate-600: #94a3b8;
   --slate-200: #e2e8f0;
 
   /* Accent - Sophisticated Blues */
@@ -31,10 +32,14 @@
   --bg-tertiary: #1f2937;
   --bg-elevated: #374151;
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(148, 163, 184, 0.1);
-  --border-medium: rgba(148, 163, 184, 0.2);
-  --border-strong: rgba(148, 163, 184, 0.3);
+  /* Borders & Dividers - Enhanced visibility for better accessibility */
+  --border-subtle: rgba(148, 163, 184, 0.15);
+  --border-medium: rgba(148, 163, 184, 0.25);
+  --border-strong: rgba(148, 163, 184, 0.4);
+
+  /* Focus States - WCAG 2.1 compliant focus indicators */
+  --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  --focus-ring-offset: 2px;
 
   /* Animation */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,6 +60,8 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Smooth scrolling for better UX */
+    scroll-behavior: smooth;
   }
 
   body {
@@ -84,10 +91,26 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Focus Styles */
+  /* Focus Styles - Enhanced for accessibility and consistency */
   :focus-visible {
     outline: 2px solid var(--blue-500);
-    outline-offset: 2px;
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Skip navigation link for keyboard users (accessibility) */
+  .skip-nav {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--blue-600);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+  }
+
+  .skip-nav:focus {
+    top: 0;
   }
 }
 
@@ -97,7 +120,20 @@
   .container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 24px;
+    /* Responsive padding for better mobile experience */
+    padding: 0 16px;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 24px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding: 0 32px;
+    }
   }
 
   .flex-center {
@@ -125,7 +161,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    /* Using min-height for better text wrapping on small screens */
+    min-height: 40px;
     padding: 0 24px;
     background: var(--blue-600);
     color: white;
@@ -141,11 +178,18 @@
     background: var(--blue-500);
   }
 
+  /* Enhanced focus state for buttons */
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: var(--focus-ring-offset);
+    box-shadow: var(--focus-ring);
+  }
+
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    min-height: 40px;
     padding: 0 24px;
     background: transparent;
     border: 1px solid var(--border-medium);
@@ -161,7 +205,14 @@
     background: var(--bg-tertiary);
   }
 
-  /* Input Primitive */
+  /* Enhanced focus state for secondary buttons */
+  .btn-secondary:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: var(--focus-ring-offset);
+    box-shadow: var(--focus-ring);
+  }
+
+  /* Input Primitive - Fixed to avoid layout shift on focus */
   .input-field {
     width: 100%;
     height: 40px;
@@ -171,15 +222,22 @@
     padding: 0 12px;
     color: white;
     font-family: var(--font-sans);
-    transition: border-color var(--transition-fast);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   }
 
+  /* Using box-shadow instead of border width change to prevent layout shift */
   .input-field:focus {
     outline: none;
-    border: 2px solid var(--blue-500);
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 1px var(--blue-500);
   }
 
-  /* Tables */
+  /* Tables - Improved contrast and responsive wrapper */
+  .data-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -190,6 +248,7 @@
     padding: 12px 16px;
     font-size: 13px;
     font-weight: 600;
+    /* Improved contrast for table headers (WCAG AA compliant) */
     color: var(--slate-600);
     border-bottom: 1px solid var(--border-subtle);
   }
@@ -203,5 +262,60 @@
 
   .data-table tr:hover td {
     background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+/* Fluid Typography - Better scaling across devices */
+@layer utilities {
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
+  }
+
+  .text-fluid-base {
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  }
+
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  }
+
+  .text-fluid-xl {
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  }
+
+  .text-fluid-2xl {
+    font-size: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  }
+}
+
+/* Reduced Motion Support - Accessibility for users with motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles - Basic print optimization */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
   }
 }

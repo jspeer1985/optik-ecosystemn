@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import WalletProvider from '@/components/WalletProvider';
 import '@/lib/wallet-error-suppressor'; // <-- ADD THIS LINE AT TOP
 import Navigation from "@/components/layout/Navigation";
