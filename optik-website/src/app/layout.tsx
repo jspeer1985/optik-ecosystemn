@@ -17,6 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className + " antialiased"}>
+        {/* Skip navigation link for keyboard users */}
+        <a href="#main-content" className="skip-nav">Skip to main content</a>
         <WalletProvider>
           <Navigation />
           <main id="main-content" className="pt-16">{children}</main>

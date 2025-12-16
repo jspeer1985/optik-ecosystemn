@@ -21,9 +21,6 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-[var(--bg-secondary)] border-b border-[var(--border-subtle)] flex items-center px-6 shadow-sm" role="navigation" aria-label="Main navigation">
-      {/* Skip Navigation Link for Accessibility */}
-      <a href="#main-content" className="skip-nav">Skip to main content</a>
-      
       <div className="flex-1 flex items-center gap-8">
         {/* Logo Area */}
         <Link href="/" className="flex items-center gap-3" aria-label="OPTIK Terminal Home">
