@@ -106,9 +106,9 @@ function HomeContent() {
             </p>
 
             {/* Contract Address Banner */}
-            <div className="inline-block bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-8 py-4 mb-10 transform hover:scale-105 transition-all cursor-pointer group hover:border-sovereign-gold/30" role="region" aria-label="OPTIK Token Contract Address">
-              <div className="text-xs text-sovereign-gold mb-1 tracking-widest uppercase font-semibold" aria-hidden="true">OPTIK Token Contract</div>
-              <div className="font-mono text-sm text-gray-400 group-hover:text-white transition-colors break-all" role="text">{CONTRACT_ADDRESS}</div>
+            <div className="inline-block bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-8 py-4 mb-10 transform hover:scale-105 transition-all cursor-pointer group hover:border-sovereign-gold/30" role="region" aria-labelledby="contract-label">
+              <div id="contract-label" className="text-xs text-sovereign-gold mb-1 tracking-widest uppercase font-semibold">OPTIK Token Contract</div>
+              <div className="font-mono text-sm text-gray-400 group-hover:text-white transition-colors break-all">{CONTRACT_ADDRESS}</div>
             </div>
 
             {/* Purchase CTA */}
