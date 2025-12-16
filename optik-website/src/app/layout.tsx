@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className + " antialiased"}>
         <WalletProvider>
           <Navigation />
-          <main className="pt-16">{children}</main>
+          <main id="main-content" className="pt-16">{children}</main>
           <Footer />
         </WalletProvider>
       </body>
