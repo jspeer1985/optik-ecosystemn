@@ -377,7 +377,6 @@ function HomeContent() {
                     value={gptInput}
                     onChange={(e) => setGptInput(e.target.value)}
                     disabled={gptLoading}
-                    aria-label="Type your message"
                   />
                   <button
                     type="submit"
